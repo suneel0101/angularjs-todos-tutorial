@@ -1,0 +1,31 @@
+<html ng-app>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <style>
+     .done-true {
+      text-decoration: line-through;
+      color: grey;
+     }
+  </style>
+</head>
+<body>
+  <div ng-controller="TodoCtrl">
+    <h2>Total todos:{{ getTotalTodos() }}</h2>
+    <ul>
+      <li ng-repeat="todo in todos">
+        <input type="checkbox" ng-model="todo.done">
+        <span class="done-{{todo.done}}">{{todo.text}}</span>
+      </li>
+    </ul>
+    <form class="form-horizontal">
+      <input type="text" ng-model="formTodoText" ng-model-instant>
+      <button class="btn" ng-click="addTodo()"><i class="icon-plus"></i>Add
+      </button>
+    </form>
+    <button ng-click="clearCompleted()" class="btn-large">Clear completed</button>
+  </div>
+</body>
+</html>
